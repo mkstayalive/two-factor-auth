@@ -238,8 +238,9 @@ public class TimeBasedOneTimePasswordUtil {
 	 */
 	public static String qrImageUrl(String keyId, String secret) {
 		StringBuilder sb = new StringBuilder(128);
-		sb.append("https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=200x200&chld=M|0&cht=qr&chl=");
-		addOtpAuthPart(keyId, secret, sb);
+		sb.append("https://chart.googleapis.com/chart");
+		sb.append("?chs=200x200&cht=qr&chl=200x200&chld=M%7C0&cht=qr&chl=");
+		sb.append("otpauth%3A%2F%2Ftotp%2F").append(keyId).append("%3Fsecret%3D").append(secret);
 		return sb.toString();
 	}
 
